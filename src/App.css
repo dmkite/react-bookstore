@@ -1,3 +1,8 @@
+html, body {height:100%;overflow:auto}
+body{
+    padding-top:140px;
+}
+
 nav h1{
     display:inline;
 }
@@ -47,7 +52,7 @@ aside .container{
     border-radius:5px;
     align-content: center;
     padding:20px;
-    margin:calc(140px + 5%) auto 5%;
+    margin:5% auto;
 }
 input, select{
     margin:0 !important;
@@ -81,7 +86,7 @@ input, select{
     padding:20px;
 }
 
-.sideBar span{
+.sideBar span, .closeBtn{
     height:30px;
     width:30px;
     text-align:center;
@@ -92,7 +97,7 @@ input, select{
     float:right;
 }
 
-.sideBar span:hover{
+.sideBar span:hover, .closeBtn:hover{
     transform:scale(1.2);
     cursor:pointer;
 }
@@ -107,6 +112,54 @@ input, select{
     100%{transform:rotateY(-90deg)}
 }
 
+.actionIcon{
+    padding:15px;
+}
+.actionIcon:hover{
+    transform:scale(1.1);
+    cursor:pointer;
+}
+
+.adminBookRow{
+    overflow-wrap:break-word;
+}
+
+.editForm{
+    position:fixed;
+    top:140px;
+    width:70%;
+    margin:5% 15% 0 ;
+    background-color:white;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:20px;
+    z-index:999;
+}
+
+.addBook{
+    position:fixed;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    z-index:1000;
+    bottom:50px;
+    right:50px;
+    height:50px;
+    width:50px;
+    background: linear-gradient(to bottom right, #363C42, #494F55);
+    border-radius: 50%;
+    color:white;
+    font-size:48px;
+    line-height:50px;
+    text-align:center;
+    padding:0;
+    margin:0;
+}
+
+.addBook:hover{
+    cursor:pointer;
+    transform:scale(1.1);
+}
+
 @media screen and (max-width: 685px){
     .card{
         width: 48%;
@@ -114,6 +167,6 @@ input, select{
     aside .container{
         width:100%;
         position:static;
-        
+
     }
 }
