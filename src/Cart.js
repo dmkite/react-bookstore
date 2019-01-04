@@ -1,7 +1,7 @@
 import React from 'react'
 import CartItem from './CartItem'
 
-function Cart(props){
+export default function Cart(props){
     return (
         <div className="container">
             <h1>Items</h1>
@@ -34,4 +34,3 @@ function Cart(props){
     )
 }
 
-export default Cart

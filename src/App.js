@@ -13,7 +13,7 @@ class App extends Component {
       isAdmin: false,
       openLogin: false,
       catalogue: [{ id: 0, title: 'placeholder', author: 'placeholder', pages: '0', inCart: false }],
-      cart: [{ id: 0, title: 'placeholder', price: 0, qty: 0 }]
+      cart: [{ id: 0, title: '', price: 0, qty: 0 }]
     }
   }
 
@@ -88,56 +88,53 @@ class App extends Component {
       console.error(err)
     }
   }
+  
+    filterBooks = (filterType) => {
+      const filteredCatalogue = this.state.catalogue.sort((a, b) => {
+        if (a[filterType].toLowerCase() < b[filterType].toLowerCase()) return -1;
+        if (a[filterType].toLowerCase() > b[filterType].toLowerCase()) return 1;
+        return 0;
+      })
+      this.setState({
+        catalogue: filteredCatalogue
+      })
+    }
+  
+    delBook = (id) => {
+      return axios.delete(`http://localhost:8082/api/books/${id}`)
+        .then(response => {
+          const newCatalogue = this.state.catalogue.filter(book => book.id != response.data.id)
+          this.setState({
+            catalogue: newCatalogue
+          })
+        })
+    }
+  
+    editBook = (body) => {
+      return axios.put(`http://localhost:8082/api/books/${body.id}`, body)
+        .then(response => {
+          const idx = this.state.catalogue.findIndex(book => book.id === response.data.id)
+          const newCatalogue = [...this.state.catalogue]
+          newCatalogue.splice(idx, 1, body)
+          this.setState({
+            catalogue: newCatalogue
+          })
+        })
+    }
+  
+    addBook = (body) => {
+      return axios.post(`http://localhost:8082/api/books/`, body)
+        .then(response => {
+          const newCatalogue = [...this.state.catalogue, response.data]
+          this.setState({
+            catalogue: newCatalogue
+          })
+        })
+    }
 
   componentDidMount() {
     this.getBooks()
   }
-
-  filterBooks = (filterType) => {
-    const filteredCatalogue = this.state.catalogue.sort((a, b) => {
-      if (a[filterType].toLowerCase() < b[filterType].toLowerCase()) return -1;
-      if (a[filterType].toLowerCase() > b[filterType].toLowerCase()) return 1;
-      return 0;
-    })
-    this.setState({
-      catalogue: filteredCatalogue
-    })
-  }
-
-  delBook = (id) => {
-    return axios.delete(`http://localhost:8082/api/books/${id}`)
-      .then(response => {
-        const newCatalogue = this.state.catalogue.filter(book => book.id != response.data.id)
-        this.setState({
-          catalogue: newCatalogue
-        })
-      })
-  }
-
-  editBook = (body) => {
-    return axios.put(`http://localhost:8082/api/books/${body.id}`, body)
-      .then(response => {
-        const idx = this.state.catalogue.findIndex(book => book.id === response.data.id)
-        const newCatalogue = [...this.state.catalogue]
-        newCatalogue.splice(idx, 1, body)
-        this.setState({
-          catalogue: newCatalogue
-        })
-      })
-  }
-
-  addBook = (body) => {
-    return axios.post(`http://localhost:8082/api/books/`, body)
-      .then(response => {
-        const newCatalogue = [...this.state.catalogue, response.data]
-        this.setState({
-          catalogue: newCatalogue
-        })
-      })
-  }
-
-
-
 
   render() {
     return (
