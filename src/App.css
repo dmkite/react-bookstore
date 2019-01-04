@@ -166,14 +166,16 @@ input, select{
 
 .editForm{
     position:fixed;
-    top:140px;
+    top:10vh;
     width:70%;
+    height:80vh;
     margin:50px 15% 0 ;
     background-color:white;
     border:1px solid #ccc;
     border-radius:5px;
     padding:20px;
     z-index:999;
+    overflow-y:scroll
 }
 
 .addBook{
