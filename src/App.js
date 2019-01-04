@@ -51,7 +51,7 @@ class App extends Component {
 
   getBooks = async (filter = false) => {
     try {
-      const response = await axios.get('http://localhost:8082/api/books')
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/books`)
       if (!filter) this.setState({ catalogue: response.data, cart: response.data.filter(item => item.inCart === true) })
       else {
         const filteredCatalogue = response.data.reduce((acc, book) => {
@@ -76,7 +76,7 @@ class App extends Component {
 
   editCart = async (type, id) => {
     try{
-      const response = await axios.patch(`http://localhost:8082/api/books/cart/${type}/${id}`)
+      const response = await axios.patch(`${process.env.REACT_APP_BASE_URL}/api/books/cart/${type}/${id}`)
       const newCatalogue = [...this.state.catalogue]
       const idx = newCatalogue.findIndex(item => item.id === id)
       newCatalogue.splice(idx, 1, response.data)
@@ -101,7 +101,7 @@ class App extends Component {
     }
   
     delBook = (id) => {
-      return axios.delete(`http://localhost:8082/api/books/${id}`)
+      return axios.delete(`${process.env.REACT_APP_BASE_URL}/api/books/${id}`)
         .then(response => {
           const newCatalogue = this.state.catalogue.filter(book => book.id != response.data.id)
           this.setState({
@@ -111,7 +111,7 @@ class App extends Component {
     }
   
     editBook = (body) => {
-      return axios.put(`http://localhost:8082/api/books/${body.id}`, body)
+      return axios.put(`${process.env.REACT_APP_BASE_URL}/api/books/${body.id}`, body)
         .then(response => {
           const idx = this.state.catalogue.findIndex(book => book.id === response.data.id)
           const newCatalogue = [...this.state.catalogue]
@@ -123,7 +123,7 @@ class App extends Component {
     }
   
     addBook = (body) => {
-      return axios.post(`http://localhost:8082/api/books/`, body)
+      return axios.post(`${process.env.REACT_APP_BASE_URL}/api/books/`, body)
         .then(response => {
           const newCatalogue = [...this.state.catalogue, response.data]
           this.setState({
