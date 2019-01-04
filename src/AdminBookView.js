@@ -2,7 +2,7 @@ import React from 'react'
 import AdminBook from './AdminBook'
 export default function AdminBookView(props){
     return (
-        <div className="list-group">
+        <div className="list-group adminBooks">
             <div className="list-group-item">
                 <div className="row">
                     <div className="col-1">id</div>

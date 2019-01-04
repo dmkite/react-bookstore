@@ -16,7 +16,7 @@ export default function Sidebar(props){
                     </div>
                     <button className="btn btn-primary" >Log In</button>
                 </form>
-
+                <p>Not an admin? <a href="#" onClick={props.signout}>Sign out</a></p>
             </div>
         )
     }
