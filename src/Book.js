@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Book({title, price, description, author, addToCart}){
+export default function Book({title, price, description, author, inCart, addToCart, removeFromCart}){
     return (
         <div className="card">
             <div className="card-body">
@@ -8,7 +8,11 @@ export default function Book({title, price, description, author, addToCart}){
                 <p>{author}</p>
                 <p className="card-text">{description}</p>
                 <p>${price}.00</p>
-                <button className="btn btn-primary" onClick={addToCart}>Add to Cart</button>
+                {inCart 
+                    ? <button className="removeBtn" onClick={removeFromCart}>Remove</button> 
+                    : <button className="addBtn" onClick={addToCart}>Add to Cart</button>
+                }
+                
             </div>
         </div>
     )

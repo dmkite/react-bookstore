@@ -5,6 +5,7 @@ body{
 
 nav h1{
     display:inline;
+    font-family: 'Lobster', cursive;
 }
 
 nav a {
@@ -39,7 +40,7 @@ aside{
 
 aside .container{
     position:fixed;
-    top:160px;
+    top:190px;
     width: 30vw;
     border: 1px solid #ccc;
     padding:20px;
@@ -52,7 +53,7 @@ aside .container{
     border-radius:5px;
     align-content: center;
     padding:20px;
-    margin:5% auto;
+    margin:50px auto;
 }
 input, select{
     margin:0 !important;
@@ -63,6 +64,36 @@ input, select{
 .card{
     width:30%;
     margin-bottom:5%;
+    position:relative;
+    padding-bottom:50px;
+}
+
+.addBtn, .removeBtn{
+    position:absolute; 
+    bottom:20px;
+    width:150px;
+    height:35px;
+    border:1px solid #35ddae;
+    border-radius:5px;
+    color: #35ddae;
+    line-height:30px;
+    background-color:transparent;
+
+}
+
+.removeBtn{
+    border-color: #dd3512;
+    color:#dd3512;
+}
+
+.addBtn:hover, .removeBtn:hover{
+    cursor:pointer;
+    background-color:#35ddae;
+    color:white;
+}
+
+.removeBtn:hover{
+    background-color:#dd3512
 }
 
 .qty{
@@ -124,11 +155,15 @@ input, select{
     overflow-wrap:break-word;
 }
 
+.adminBooks{
+    margin-top:50px;
+}
+
 .editForm{
     position:fixed;
     top:140px;
     width:70%;
-    margin:5% 15% 0 ;
+    margin:50px 15% 0 ;
     background-color:white;
     border:1px solid #ccc;
     border-radius:5px;
@@ -155,12 +190,16 @@ input, select{
     margin:0;
 }
 
+.sideBar p{
+    margin-top: 50px;
+}
+
 .addBook:hover{
     cursor:pointer;
     transform:scale(1.1);
 }
 
-@media screen and (max-width: 685px){
+@media screen and (max-width: 800px){
     .card{
         width: 48%;
     }

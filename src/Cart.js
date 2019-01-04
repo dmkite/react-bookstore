@@ -8,21 +8,20 @@ function Cart(props){
             <div className="list-group">
                 <div className="list-group-item">
                     <div className="row">
-                        <div className="col-6">Book</div>
-                        <div className="col-3">Price</div>
-                        <div className="col-3 qty">Qty</div>
+                        <div className="col-8">Book</div>
+                        <div className="col-4">Price</div>
                     </div>
                 </div>
-                {props.cartItems.map(book => <CartItem
+                {props.cart.map(book => <CartItem
                     key={book.id}
                     {...book}
                 />)}
                 <div className="list-group-item">
                     <div className="row total">
-                        <div className="col-6"><b>Total</b></div>
-                        <div className="col-3">
+                        <div className="col-8"><b>Total</b></div>
+                        <div className="col-4">
                             <b>
-                            ${props.cartItems.reduce((acc, item) => {
+                            ${props.cart.reduce((acc, item) => {
                                 acc += item.price
                                 return acc
                             }, 0)}.00
