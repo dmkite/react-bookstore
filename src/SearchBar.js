@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 
 const DEFAULT_STRING = 'Search...'
 
-class SearchBar extends Component{
+export default class SearchBar extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -23,5 +23,3 @@ class SearchBar extends Component{
         )
     }
 }
-
-export default SearchBar

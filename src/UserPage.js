@@ -1,32 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Books from './Books'
 import Cart from './Cart'
 import FilterSearch from './FilterSearch'
 
-export default class UserPage extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            // cartItems: [{id:0, title:'placeholder', price:0, qty:0}]
-        }
-    }
-    
-    render(){
+export default function UserPage(props){
         return (
             <div className="container-fluid">
                 <div className="row">
                 <main className="col-12 col-md-8">
-                    <FilterSearch search={this.props.getBooks} filter={this.props.filterBooks} />
+                    <FilterSearch search={props.getBooks} filter={props.filterBooks} />
                     <Books
-                        catalogue={this.props.catalogue}
-                        editCart={this.props.editCart}
+                        catalogue={props.catalogue}
+                        editCart={props.editCart}
                     />
                 </main>
                 <aside className="col-12 col-md-4">
-                    <Cart cart={this.props.cart}/>
+                    <Cart cart={props.cart}/>
                 </aside>
                 </div>
             </div>
         )
-    }
 }
